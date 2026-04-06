@@ -27,7 +27,7 @@ func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _physics_process(_delta: float) -> void:
-	_camera(_delta)
+	_camera()
 	if mouse_lock:
 		_movement()
 		_change_shape()
@@ -64,14 +64,14 @@ func _movement():
 		linear_velocity.z = dir.z * speed
 		linear_velocity.x = dir.x * speed
 
-func _camera(_delta : float):
+func _camera():
 	_mouse_lock()
 	if mouse_lock :
-		_rotate_camera(_delta)
+		_rotate_camera()
 
-func _rotate_camera(delta : float, sans_mod : float = 1.0) -> void:
-	rotation.y -= look_dir.x * camera_sensitivity * delta
-	camera.rotation.x = clamp(camera.rotation.x - look_dir.y * camera_sensitivity * sans_mod * delta,-1.4,1.4)
+func _rotate_camera(sans_mod : float = 0.1) -> void:
+	rotation.y -= look_dir.x * camera_sensitivity * sans_mod
+	camera.rotation.x = clamp(camera.rotation.x - look_dir.y * camera_sensitivity * sans_mod,-1.4,1.4)
 	look_dir = Vector2.ZERO
 	
 	rotation.y = wrapf(rotation.y, -PI, PI) 

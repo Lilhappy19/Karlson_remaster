@@ -25,6 +25,7 @@ gravity_scale = 5.0
 lock_rotation = true
 linear_damp = 1.0
 script = ExtResource("1_3vyb7")
+camera_sensitivity = 0.5
 
 [node name="StandardShape" type="MeshInstance3D" parent="." unique_id=1943163866]
 mesh = SubResource("CapsuleMesh_sugp2")
