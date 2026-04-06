@@ -13,8 +13,8 @@ size = Vector3(100, 0.3, 100)
 albedo_texture = ExtResource("1_jei10")
 uv1_triplanar = true
 
-[sub_resource type="BoxMesh" id="BoxMesh_eb6dy"]
-size = Vector3(5, 20, 5)
+[sub_resource type="BoxMesh" id="BoxMesh_lxyef"]
+size = Vector3(20, 0.3, 5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_trceg"]
 albedo_texture = ExtResource("2_lxyef")
@@ -26,6 +26,9 @@ size = Vector3(5, 3, 5)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a8y0u"]
 albedo_texture = ExtResource("3_3g423")
 uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_eb6dy"]
+size = Vector3(5, 20, 5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jkv2x"]
 albedo_texture = ExtResource("4_0xfci")
@@ -47,9 +50,9 @@ mesh = SubResource("BoxMesh_0wfyh")
 material = SubResource("StandardMaterial3D_sugp2")
 
 [node name="Pillar" type="CSGMesh3D" parent="." unique_id=727870073]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.271069, 10.130123, -15.759158)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.271069, 1.9867749, -15.759158)
 use_collision = true
-mesh = SubResource("BoxMesh_eb6dy")
+mesh = SubResource("BoxMesh_lxyef")
 material = SubResource("StandardMaterial3D_trceg")
 
 [node name="Pillar2" type="CSGMesh3D" parent="." unique_id=577296794]

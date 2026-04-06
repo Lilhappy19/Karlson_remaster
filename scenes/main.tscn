@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bijoas2l5dxm" path="res://scenes/obstacles.tscn" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://56oq03k4cnuc" path="res://scenes/player.tscn" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://b56p3ggl5xvlh" path="res://scenes/box.tscn" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://bynh1v4vlcotv" path="res://scenes/environment.tscn" id="6_ya4ey"]
 
 [node name="Main" type="Node3D" unique_id=186055950]
@@ -12,8 +13,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.002243042, 0, -0.12874222)
 [node name="Environment" parent="." unique_id=1925126528 instance=ExtResource("6_ya4ey")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2994442, 0)
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1285048465]
-transform = Transform3D(1, 0, 0, 0, 0.9824048, 0.1867641, 0, -0.1867641, 0.9824048, 0, 11.833004, 35.90038)
-
 [node name="Player" parent="." unique_id=289249568 instance=ExtResource("3_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1386714, 0)
+
+[node name="box" parent="." unique_id=1389292744 instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1442027, 6.5890255)
+
+[node name="box2" parent="." unique_id=1978358047 instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2153025, 1.1442027, 6.5890255)
+
+[node name="box3" parent="." unique_id=1909013392 instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3376951, 1.1442027, 6.5890255)
+
+[node name="box4" parent="." unique_id=905007252 instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1872063, 3.4705377, 6.5890255)
+
+[node name="box5" parent="." unique_id=922965339 instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12601, 3.5305107, 6.5890255)
+
+[node name="box6" parent="." unique_id=116852436 instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14275265, 5.9985657, 6.5939407)
