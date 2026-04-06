@@ -2,6 +2,7 @@ extends RigidBody3D
 
 class_name Player
 
+@export var health : float = 100
 @export var speed : float = 10
 @export var speed_M : float = 2
 @export var jump_force : float = 20
@@ -12,6 +13,7 @@ class_name Player
 @onready var crouch_collision : CollisionShape3D = $CrouchCollison
 @onready var crouch_shape : MeshInstance3D = $CrouchShape
 @onready var crouch_check : RayCast3D = $CrouchCheck
+@onready var health_bar : ProgressBar = $Camera3D/HealthBar
 
 @onready var ground_check_shape : ShapeCast3D = $ShapeCast3D
 @onready var camera : Camera3D = $Camera3D
@@ -24,6 +26,9 @@ var look_dir : Vector2
 
 func _ready() -> void:
 	camera_original_pos = camera.position.y
+	
+	health_bar.value = health
+	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _physics_process(_delta: float) -> void:
@@ -100,6 +105,9 @@ func _change_shape():
 		standard_collision.disabled = false
 		crouch_collision.disabled = true
 		crouch_shape.visible = false
+
+func _take_damage(_damage : float):
+	pass
 
 func _input(event: InputEvent) -> void:
 	if mouse_lock:
