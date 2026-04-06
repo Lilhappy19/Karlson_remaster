@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://56oq03k4cnuc"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0wfyh"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_sugp2"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jyhfs"]
+
+[node name="Player" type="RigidBody3D" unique_id=289249568]
+physics_material_override = SubResource("PhysicsMaterial_0wfyh")
+lock_rotation = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1943163866]
+mesh = SubResource("CapsuleMesh_sugp2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=102568789]
+shape = SubResource("CapsuleShape3D_jyhfs")

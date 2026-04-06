@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://bijoas2l5dxm"]
+
+[ext_resource type="Texture2D" uid="uid://imllamqo4nfi" path="res://assets/prototype-textures/addons/kenney_prototype_textures/dark/texture_09.png" id="1_jei10"]
+[ext_resource type="Texture2D" uid="uid://csr7chddyorls" path="res://assets/prototype-textures/addons/kenney_prototype_textures/red/texture_10.png" id="2_lxyef"]
+[ext_resource type="Texture2D" uid="uid://b5bllhiirkl1f" path="res://assets/prototype-textures/addons/kenney_prototype_textures/purple/texture_10.png" id="3_3g423"]
+[ext_resource type="Texture2D" uid="uid://ewbjho77lf4w" path="res://assets/prototype-textures/addons/kenney_prototype_textures/orange/texture_10.png" id="4_0xfci"]
+[ext_resource type="Texture2D" uid="uid://cvv4bifl7myfb" path="res://assets/prototype-textures/addons/kenney_prototype_textures/green/texture_10.png" id="5_p7p8a"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_0wfyh"]
+size = Vector3(100, 0.3, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sugp2"]
+albedo_texture = ExtResource("1_jei10")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_eb6dy"]
+size = Vector3(5, 20, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_trceg"]
+albedo_texture = ExtResource("2_lxyef")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_jei10"]
+size = Vector3(5, 3, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a8y0u"]
+albedo_texture = ExtResource("3_3g423")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jkv2x"]
+albedo_texture = ExtResource("4_0xfci")
+uv1_triplanar = true
+
+[sub_resource type="PrismMesh" id="PrismMesh_jbj1t"]
+left_to_right = 1.0
+size = Vector3(10, 6, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_muem4"]
+albedo_texture = ExtResource("5_p7p8a")
+uv1_triplanar = true
+
+[node name="Obstacles" type="Node3D" unique_id=674403272]
+
+[node name="Floor" type="CSGMesh3D" parent="." unique_id=473468149]
+use_collision = true
+mesh = SubResource("BoxMesh_0wfyh")
+material = SubResource("StandardMaterial3D_sugp2")
+
+[node name="Pillar" type="CSGMesh3D" parent="." unique_id=727870073]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.271069, 10.130123, -15.759158)
+use_collision = true
+mesh = SubResource("BoxMesh_eb6dy")
+material = SubResource("StandardMaterial3D_trceg")
+
+[node name="Pillar2" type="CSGMesh3D" parent="." unique_id=577296794]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.460192, 1.6212788, -12.291122)
+use_collision = true
+mesh = SubResource("BoxMesh_jei10")
+material = SubResource("StandardMaterial3D_a8y0u")
+
+[node name="Pillar3" type="CSGMesh3D" parent="." unique_id=2142155362]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.418386, 10.108137, 19.424671)
+use_collision = true
+mesh = SubResource("BoxMesh_eb6dy")
+material = SubResource("StandardMaterial3D_jkv2x")
+
+[node name="Ramp" type="CSGMesh3D" parent="." unique_id=2132813281]
+transform = Transform3D(0.7567327, 0, -0.65372443, 0, 1, 0, 0.65372443, 0, 0.7567327, 20.157606, 3.1209612, 16.269997)
+use_collision = true
+mesh = SubResource("PrismMesh_jbj1t")
+material = SubResource("StandardMaterial3D_muem4")
