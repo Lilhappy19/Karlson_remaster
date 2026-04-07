@@ -45,10 +45,14 @@ shape = SubResource("CylinderShape3D_3vyb7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.47718334, -0.3861072)
 
 [node name="HealthBar" type="ProgressBar" parent="Camera3D" unique_id=1092745569]
-offset_left = 12.0
-offset_top = 14.0
-offset_right = 395.0
-offset_bottom = 41.0
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_top = -48.0
+offset_right = 396.0
+offset_bottom = -21.0
+grow_vertical = 0
 theme_override_styles/fill = SubResource("StyleBoxFlat_3vyb7")
 show_percentage = false
 
