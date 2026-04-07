@@ -74,7 +74,19 @@ mesh = SubResource("PrismMesh_jbj1t")
 material = SubResource("StandardMaterial3D_muem4")
 
 [node name="Ramp2" type="CSGMesh3D" parent="." unique_id=1434101973]
-transform = Transform3D(-0.75673264, 0, 0.6537245, 0, 1, 0, -0.6537245, 0, -0.75673264, 34.533524, 3.120963, 30.95072)
+transform = Transform3D(-0.75673264, 0, 0.6537245, 0, 1, 0, -0.6537245, 0, -0.75673264, 33.741783, 3.120965, 28.048847)
 use_collision = true
 mesh = SubResource("PrismMesh_jbj1t")
 material = SubResource("StandardMaterial3D_muem4")
+
+[node name="Pillar4" type="CSGMesh3D" parent="." unique_id=247421057]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.460192, 4.520357, -20.656128)
+use_collision = true
+mesh = SubResource("BoxMesh_jei10")
+material = SubResource("StandardMaterial3D_a8y0u")
+
+[node name="Pillar5" type="CSGMesh3D" parent="." unique_id=1327259470]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.460192, 7.0739326, -29.67257)
+use_collision = true
+mesh = SubResource("BoxMesh_jei10")
+material = SubResource("StandardMaterial3D_a8y0u")

@@ -5,6 +5,7 @@ class_name Player
 @export var health : float = 100
 @export var speed : float = 500
 @export var speed_M : float = 2
+@export var slide_threshold : int = 4
 @export var jump_force : float = 20
 @export var camera_sensitivity : float = 1
 
@@ -59,9 +60,12 @@ func _movement(_delta : float):
 		
 	dir = dir.normalized().rotated(Vector3.UP,rotation.y)
 	
-	if Input.is_action_pressed("Move_Crouch_Slide"):
-		linear_velocity.z = dir.z * speed / speed_M * _delta
-		linear_velocity.x = dir.x * speed / speed_M * _delta
+	var momentum : int = int(Vector3(linear_velocity.x,0,linear_velocity.z).length())
+	
+	if Input.is_action_pressed("Move_Crouch_Slide") and ground_check_shape.is_colliding():
+		if momentum <= slide_threshold:
+			linear_velocity.z = dir.z * speed / speed_M * _delta
+			linear_velocity.x = dir.x * speed / speed_M * _delta
 	elif Input.is_action_pressed("Move_Sprint"):
 		linear_velocity.z = dir.z * speed * speed_M * _delta
 		linear_velocity.x = dir.x * speed * speed_M * _delta

@@ -14,8 +14,13 @@ friction = 0.0
 height = 0.055
 radius = 0.415
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g2els"]
+bg_color = Color(1, 0.34563863, 0.25449032, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3vyb7"]
 bg_color = Color(0, 0.7894418, 0.24210945, 1)
+border_color = Color(0, 0.9648202, 0.23898134, 1)
+border_blend = true
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3vyb7"]
 height = 1.5
@@ -53,6 +58,7 @@ offset_top = -48.0
 offset_right = 396.0
 offset_bottom = -21.0
 grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_g2els")
 theme_override_styles/fill = SubResource("StyleBoxFlat_3vyb7")
 show_percentage = false
 
