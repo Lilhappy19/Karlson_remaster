@@ -3,7 +3,7 @@ extends RigidBody3D
 class_name Player
 
 @export var health : float = 100
-@export var speed : float = 10
+@export var speed : float = 500
 @export var speed_M : float = 2
 @export var jump_force : float = 20
 @export var camera_sensitivity : float = 1
@@ -34,13 +34,13 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	_camera()
 	if mouse_lock:
-		_movement()
+		_movement(_delta)
 		_change_shape()
 
 func _ray_update():
 	ground_check_shape.force_shapecast_update()
 
-func _movement():
+func _movement(_delta : float):
 	_ray_update()
 	var dir : Vector3 = Vector3.ZERO
 	
@@ -60,14 +60,14 @@ func _movement():
 	dir = dir.normalized().rotated(Vector3.UP,rotation.y)
 	
 	if Input.is_action_pressed("Move_Crouch_Slide"):
-		linear_velocity.z = dir.z * speed / speed_M
-		linear_velocity.x = dir.x * speed / speed_M
+		linear_velocity.z = dir.z * speed / speed_M * _delta
+		linear_velocity.x = dir.x * speed / speed_M * _delta
 	elif Input.is_action_pressed("Move_Sprint"):
-		linear_velocity.z = dir.z * speed * speed_M
-		linear_velocity.x = dir.x * speed * speed_M
+		linear_velocity.z = dir.z * speed * speed_M * _delta
+		linear_velocity.x = dir.x * speed * speed_M * _delta
 	else:
-		linear_velocity.z = dir.z * speed
-		linear_velocity.x = dir.x * speed
+		linear_velocity.z = dir.z * speed * _delta
+		linear_velocity.x = dir.x * speed * _delta
 
 func _camera():
 	_mouse_lock()
