@@ -65,14 +65,14 @@ func _movement(_delta : float):
 			linear_velocity.y = jump_force
 	elif not wall_check.is_colliding():
 		can_wall_jump = true
-	
+	#=== wall runing ===
 	if wall_check.is_colliding():
 		linear_velocity.y = clamp(linear_velocity.y,fall_off_amount,jump_force)
 	
 	if ground_check_shape.is_colliding():
 		if Input.is_action_just_pressed("Move_Jump"):
 			linear_velocity.y = jump_force
-		
+	#===================
 	if Input.is_action_pressed("Move_Forward"):
 		dir.z -= 1
 	if Input.is_action_pressed("Move_Backward"):
@@ -88,14 +88,14 @@ func _movement(_delta : float):
 	
 	if Input.is_action_pressed("Move_Crouch_Slide") and ground_check_shape.is_colliding() or crouch_check.is_colliding():
 		if momentum <= slide_threshold:
-			linear_velocity.z = dir.z * speed / speed_M * _delta
-			linear_velocity.x = dir.x * speed / speed_M * _delta
+			linear_velocity.z = lerp(linear_velocity.z,dir.z * speed * _delta / speed_M,0.5)
+			linear_velocity.x = lerp(linear_velocity.x,dir.x * speed * _delta / speed_M,0.5)
 	elif Input.is_action_pressed("Move_Sprint"):
-		linear_velocity.z = dir.z * speed * speed_M * _delta
-		linear_velocity.x = dir.x * speed * speed_M * _delta
+		linear_velocity.z =  lerp(linear_velocity.z,dir.z * speed * _delta * speed_M,0.5)
+		linear_velocity.x = lerp(linear_velocity.x,dir.x * speed * _delta * speed_M,0.5)
 	else:
-		linear_velocity.z = dir.z * speed * _delta
-		linear_velocity.x = dir.x * speed * _delta
+		linear_velocity.z = lerp(linear_velocity.z,dir.z * speed * _delta,0.5)
+		linear_velocity.x = lerp(linear_velocity.x,dir.x * speed * _delta,0.5)
 
 func _drag():
 	var collider = grab_ray.get_collider()
@@ -142,14 +142,14 @@ func _mouse_lock():
 
 func _change_shape():
 	if crouch_check.is_colliding() or Input.is_action_pressed("Move_Crouch_Slide"):
-		camera.position.y = camera_target_pos
+		camera.position.y = lerp(camera.position.y,camera_target_pos,0.3)
 		
 		standard_shape.visible = false
 		standard_collision.disabled = true
 		crouch_collision.disabled = false
 		crouch_shape.visible = true
 	else:
-		camera.position.y = camera_original_pos
+		camera.position.y = lerp(camera.position.y,camera_original_pos,0.3)
 		
 		standard_shape.visible = true
 		standard_collision.disabled = false
