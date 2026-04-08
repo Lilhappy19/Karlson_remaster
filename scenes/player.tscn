@@ -41,6 +41,7 @@ script = ExtResource("1_3vyb7")
 camera_sensitivity = 0.5
 
 [node name="StandardShape" type="MeshInstance3D" parent="." unique_id=1943163866]
+cast_shadow = 0
 mesh = SubResource("CapsuleMesh_sugp2")
 
 [node name="StandardCollison" type="CollisionShape3D" parent="." unique_id=102568789]
@@ -84,6 +85,7 @@ shape = SubResource("CapsuleShape3D_3vyb7")
 
 [node name="CrouchShape" type="MeshInstance3D" parent="." unique_id=322115859]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.24349904, 0)
+cast_shadow = 0
 mesh = SubResource("CapsuleMesh_g2els")
 
 [node name="CrouchCheck" type="RayCast3D" parent="." unique_id=422085462]
