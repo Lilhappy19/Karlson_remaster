@@ -15,7 +15,7 @@ size = Vector3(2, 2, 2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_sugp2"]
 size = Vector3(1.9960938, 1.9899902, 1.9833984)
 
-[node name="box" type="RigidBody3D" unique_id=1389292744]
+[node name="box" type="RigidBody3D" unique_id=1389292744 groups=["Box"]]
 physics_material_override = SubResource("PhysicsMaterial_sugp2")
 gravity_scale = 5.0
 

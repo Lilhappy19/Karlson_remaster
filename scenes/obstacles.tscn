@@ -42,6 +42,9 @@ size = Vector3(10, 6, 10)
 albedo_texture = ExtResource("5_p7p8a")
 uv1_triplanar = true
 
+[sub_resource type="BoxMesh" id="BoxMesh_3g423"]
+size = Vector3(0.53, 11.16, 26.99)
+
 [node name="Obstacles" type="Node3D" unique_id=674403272]
 
 [node name="Floor" type="CSGMesh3D" parent="." unique_id=473468149]
@@ -90,3 +93,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.460192, 7.0739326, -29.672
 use_collision = true
 mesh = SubResource("BoxMesh_jei10")
 material = SubResource("StandardMaterial3D_a8y0u")
+
+[node name="Floor2" type="CSGMesh3D" parent="." unique_id=438303492]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -19.042204, -136.18863)
+use_collision = true
+mesh = SubResource("BoxMesh_0wfyh")
+material = SubResource("StandardMaterial3D_sugp2")
+
+[node name="wall" type="CSGMesh3D" parent="." unique_id=1169734197]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.418386, 6.290743, -67.06242)
+use_collision = true
+mesh = SubResource("BoxMesh_3g423")
+material = SubResource("StandardMaterial3D_jkv2x")
+
+[node name="wall2" type="CSGMesh3D" parent="." unique_id=307179584]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.020863, -0.08757782, -85.601204)
+use_collision = true
+mesh = SubResource("BoxMesh_3g423")
+material = SubResource("StandardMaterial3D_jkv2x")
+
+[node name="Pillar6" type="CSGMesh3D" parent="." unique_id=837431172]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.620577, 10.108137, 19.424671)
+use_collision = true
+mesh = SubResource("BoxMesh_eb6dy")
+material = SubResource("StandardMaterial3D_jkv2x")
