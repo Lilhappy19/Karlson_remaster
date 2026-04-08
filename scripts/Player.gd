@@ -2,7 +2,7 @@ extends RigidBody3D
 
 class_name Player
 
-var grabbable_groups : Array[String] = ["Box"]
+@export var grabbable_groups : Array[String] = ["Box"]
 
 @export var fall_off_amount : float = -3
 @export var health : float = 100
@@ -25,10 +25,11 @@ var grabbable_groups : Array[String] = ["Box"]
 @onready var ground_check_shape : ShapeCast3D = $ShapeCast3D
 @onready var camera : Camera3D = $Camera3D
 
-var camera_target_pos : float = 0
-var camera_original_pos : float
 const original_gravity : int = 5
 const tilt_amount : float = 0.15
+
+var camera_target_pos : float = 0
+var camera_original_pos : float
 
 var can_wall_jump : bool = true
 var mouse_lock : bool = true
@@ -97,12 +98,12 @@ func _movement(_delta : float):
 		linear_velocity.x = dir.x * speed * _delta
 
 func _drag():
-	var colider = grab_ray.get_collider()
+	var collider = grab_ray.get_collider()
 	
 	if Input.is_action_just_pressed("Input_Left_Click"):
 		if grab_ray.is_colliding() :
 			for i in grabbable_groups:
-				if colider.is_in_group(i):
+				if collider.is_in_group(i):
 					grabbed_obj = grab_ray.get_collider()
 					obj_distance = camera.global_position.distance_to(grab_ray.get_collision_point())
 	if Input.is_action_pressed("Input_Left_Click") and grabbed_obj != null:
