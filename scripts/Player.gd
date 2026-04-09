@@ -25,8 +25,8 @@ class_name Player
 @onready var ground_check_shape : ShapeCast3D = $ShapeCast3D
 @onready var camera : Camera3D = $Camera3D
 
-@onready var pause_menue : Pause_menu = $"../pause menu"
-@onready var settings_menue : Settings_menu = $"../settings_menu"
+@onready var pause_menue : Pause_menu = $"pause menu"
+@onready var settings_menue : Settings_menu = $settings_menu
 
 const original_gravity : int = 5
 const tilt_amount : float = 0.15

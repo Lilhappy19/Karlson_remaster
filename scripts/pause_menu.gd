@@ -2,7 +2,7 @@ extends Control
 
 class_name Pause_menu
 
-@onready var player : Player = $"../Player"
+@onready var player : Player = $".."
 @onready var settings_menu : Settings_menu = $"../settings_menu"
 
 func _ready() -> void:

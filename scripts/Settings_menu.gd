@@ -2,7 +2,7 @@ extends Control
 
 class_name Settings_menu
 
-@onready var player : Player = $"../Player"
+@onready var player : Player = $".."
 @onready var pause_menu : Pause_menu = $"../pause menu"
 @onready var sensitivity_slider : HSlider = $"sensitivity slider"
 
