@@ -14,6 +14,11 @@ config/name="Karlson_remaster"
 run/main_scene="uid://b6ounb86v4mun"
 config/features=PackedStringArray("4.6", "Forward Plus")
 
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
 [input]
 
 Move_Forward={

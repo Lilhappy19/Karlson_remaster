@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://brftd8xe0f6dc"]
+
+[ext_resource type="Script" uid="uid://hlj5mtrwk3f5" path="res://scripts/Settings_menu.gd" id="1_05p07"]
+
+[node name="settings_menu" type="Control" unique_id=1627981791]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_05p07")
+
+[node name="back" type="Button" parent="." unique_id=1566534794]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 31.0
+offset_right = 242.0
+offset_bottom = 62.0
+text = "Back"
+
+[node name="sensitivity slider" type="HSlider" parent="." unique_id=1472566283]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 129.0
+offset_right = 494.0
+offset_bottom = 145.0
+max_value = 2.0
+step = 0.1
+
+[node name="name" type="Label" parent="sensitivity slider" unique_id=1405422469]
+layout_mode = 0
+offset_left = 4.0
+offset_top = -32.0
+offset_right = 443.0
+offset_bottom = -9.0
+text = "Mause sensitivity :"
+horizontal_alignment = 1

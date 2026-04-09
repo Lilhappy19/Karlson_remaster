@@ -25,6 +25,9 @@ class_name Player
 @onready var ground_check_shape : ShapeCast3D = $ShapeCast3D
 @onready var camera : Camera3D = $Camera3D
 
+@onready var pause_menue : Pause_menu = $"../pause menu"
+@onready var settings_menue : Settings_menu = $"../settings_menu"
+
 const original_gravity : int = 5
 const tilt_amount : float = 0.15
 
@@ -136,20 +139,23 @@ func _mouse_lock():
 		mouse_lock = !mouse_lock
 		
 		if mouse_lock:
+			pause_menue.visible = false
+			settings_menue.visible = false
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		else:
+			pause_menue.visible = true
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _change_shape():
 	if crouch_check.is_colliding() or Input.is_action_pressed("Move_Crouch_Slide"):
-		camera.position.y = lerp(camera.position.y,camera_target_pos,0.3)
+		camera.position.y = lerp(camera.position.y,camera_target_pos,0.5)
 		
 		standard_shape.visible = false
 		standard_collision.disabled = true
 		crouch_collision.disabled = false
 		crouch_shape.visible = true
 	else:
-		camera.position.y = lerp(camera.position.y,camera_original_pos,0.3)
+		camera.position.y = lerp(camera.position.y,camera_original_pos,0.5)
 		
 		standard_shape.visible = true
 		standard_collision.disabled = false

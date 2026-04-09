@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bn1iw6c60v4d8"]
+
+[ext_resource type="Script" uid="uid://bddb5m5nuhtd2" path="res://scripts/pause_menu.gd" id="1_n87rw"]
+
+[node name="pause menu" type="Control" unique_id=1557834838]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n87rw")
+
+[node name="Resume button" type="Button" parent="." unique_id=1297800629]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 194.0
+offset_right = 290.0
+offset_bottom = 225.0
+text = "Resume"
+
+[node name="Settings button" type="Button" parent="." unique_id=1175534566]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 243.0
+offset_right = 289.0
+offset_bottom = 274.0
+text = "Settings"
+
+[node name="Quit button" type="Button" parent="." unique_id=847622499]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 355.0
+offset_right = 288.0
+offset_bottom = 386.0
+text = "Quit
+"
+
+[node name="Restart button" type="Button" parent="." unique_id=980993232]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 292.0
+offset_right = 288.0
+offset_bottom = 323.0
+text = "Restart"
