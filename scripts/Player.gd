@@ -12,6 +12,7 @@ class_name Player
 @export var jump_force : float = 20
 @export var camera_sensitivity : float = 1
 @export var strength : float = 15
+@export var slope_acceleration : float = 20.0
 
 @onready var standard_collision : CollisionShape3D = $StandardCollison
 @onready var standard_shape : MeshInstance3D = $StandardShape
@@ -89,6 +90,20 @@ func _movement(_delta : float):
 	
 	var momentum : int = int(Vector3(linear_velocity.x,0,linear_velocity.z).length())
 	
+	#=== slide ===
+	if ground_check_shape.is_colliding() and Input.is_action_pressed("Move_Crouch_Slide"):
+		var slope_normal : Vector3 = ground_check_shape.get_collision_normal(0)
+		
+		linear_velocity = linear_velocity.slide(slope_normal)
+		
+		if slope_normal != Vector3.UP:
+			var downhill_dir = Vector3.DOWN.slide(slope_normal).normalized()
+			
+			if Vector3(linear_velocity.x, 0, linear_velocity.z).dot(Vector3(downhill_dir.x, 0, downhill_dir.z)) > 0:
+				linear_velocity.x += downhill_dir.x * slope_acceleration * _delta
+				linear_velocity.z += downhill_dir.z * slope_acceleration * _delta
+	
+	#==============
 	if Input.is_action_pressed("Move_Crouch_Slide") and ground_check_shape.is_colliding() or crouch_check.is_colliding():
 		if momentum <= slide_threshold:
 			linear_velocity.z = lerp(linear_velocity.z,dir.z * speed * _delta / speed_M,0.5)

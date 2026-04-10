@@ -97,8 +97,8 @@ transform = Transform3D(1, 0, 0, 0, -1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51087505, 0)
 shape = SubResource("CylinderShape3D_g2els")
 
-[node name="pause menu" parent="." unique_id=1557834838 instance=ExtResource("3_dqkch")]
+[node name="settings_menu" parent="." unique_id=1627981791 instance=ExtResource("4_qlg0r")]
 visible = false
 
-[node name="settings_menu" parent="." unique_id=1627981791 instance=ExtResource("4_qlg0r")]
+[node name="pause menu" parent="." unique_id=1557834838 instance=ExtResource("3_dqkch")]
 visible = false
