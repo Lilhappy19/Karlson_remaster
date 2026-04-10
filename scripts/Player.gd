@@ -12,7 +12,7 @@ class_name Player
 @export var jump_force : float = 20
 @export var camera_sensitivity : float = 1
 @export var strength : float = 15
-@export var slope_acceleration : float = 20.0
+@export var slope_acceleration : float = 50.0
 
 @onready var standard_collision : CollisionShape3D = $StandardCollison
 @onready var standard_shape : MeshInstance3D = $StandardShape
@@ -77,6 +77,7 @@ func _movement(_delta : float):
 		if Input.is_action_just_pressed("Move_Jump"):
 			linear_velocity.y = jump_force
 	#===================
+	
 	if Input.is_action_pressed("Move_Forward"):
 		dir.z -= 1
 	if Input.is_action_pressed("Move_Backward"):
@@ -88,30 +89,37 @@ func _movement(_delta : float):
 		
 	dir = dir.normalized().rotated(Vector3.UP,rotation.y)
 	
-	var momentum : int = int(Vector3(linear_velocity.x,0,linear_velocity.z).length())
-	
 	#=== slide ===
-	if ground_check_shape.is_colliding() and Input.is_action_pressed("Move_Crouch_Slide"):
+	var is_jumping : bool = Input.is_action_just_pressed("Move_Jump")
+	
+	if ground_check_shape.is_colliding() and Input.is_action_pressed("Move_Crouch_Slide") and not is_jumping:
 		var slope_normal : Vector3 = ground_check_shape.get_collision_normal(0)
 		
-		linear_velocity = linear_velocity.slide(slope_normal)
+		var current_speed : float = linear_velocity.length()
+		linear_velocity = linear_velocity.slide(slope_normal).normalized() * current_speed
 		
 		if slope_normal != Vector3.UP:
-			var downhill_dir = Vector3.DOWN.slide(slope_normal).normalized()
-			
-			if Vector3(linear_velocity.x, 0, linear_velocity.z).dot(Vector3(downhill_dir.x, 0, downhill_dir.z)) > 0:
-				linear_velocity.x += downhill_dir.x * slope_acceleration * _delta
-				linear_velocity.z += downhill_dir.z * slope_acceleration * _delta
-	
+			var downhill_dir : Vector3 = Vector3.DOWN.slide(slope_normal).normalized()
+			var steepness : float = 1.0 - slope_normal.y
+			linear_velocity += downhill_dir * (slope_acceleration * steepness * 10.0) * _delta
 	#==============
+	
+	var momentum : int = int(Vector3(linear_velocity.x,linear_velocity.y,linear_velocity.z).length())
+	
 	if Input.is_action_pressed("Move_Crouch_Slide") and ground_check_shape.is_colliding() or crouch_check.is_colliding():
 		if momentum <= slide_threshold:
 			linear_velocity.z = lerp(linear_velocity.z,dir.z * speed * _delta / speed_M,0.5)
 			linear_velocity.x = lerp(linear_velocity.x,dir.x * speed * _delta / speed_M,0.5)
 	elif Input.is_action_pressed("Move_Sprint"):
+		if not ground_check_shape.is_colliding():
+			linear_velocity.z =  lerp(linear_velocity.z,dir.z * speed * _delta * speed_M * (momentum * 0.1),0.5)
+			linear_velocity.x = lerp(linear_velocity.x,dir.x * speed * _delta * speed_M * (momentum * 0.1),0.5)
 		linear_velocity.z =  lerp(linear_velocity.z,dir.z * speed * _delta * speed_M,0.5)
 		linear_velocity.x = lerp(linear_velocity.x,dir.x * speed * _delta * speed_M,0.5)
 	else:
+		if not ground_check_shape.is_colliding():
+			linear_velocity.z =  lerp(linear_velocity.z,dir.z * speed * _delta * (momentum * 0.1),0.5)
+			linear_velocity.x = lerp(linear_velocity.x,dir.x * speed * _delta * (momentum * 0.1),0.5)
 		linear_velocity.z = lerp(linear_velocity.z,dir.z * speed * _delta,0.5)
 		linear_velocity.x = lerp(linear_velocity.x,dir.x * speed * _delta,0.5)
 
