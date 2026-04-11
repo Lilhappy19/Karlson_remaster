@@ -22,6 +22,7 @@ class_name Player
 @onready var wall_check : ShapeCast3D = $WallCheck
 @onready var grab_ray : RayCast3D = $Camera3D/GrabCast
 @onready var health_bar : ProgressBar = $Camera3D/HealthBar
+@onready var crosshair : TextureRect = $Camera3D/TextureRect
 
 @onready var ground_check_shape : ShapeCast3D = $ShapeCast3D
 @onready var camera : Camera3D = $Camera3D
@@ -125,6 +126,11 @@ func _movement(_delta : float):
 
 func _drag():
 	var collider = grab_ray.get_collider()
+	
+	if grab_ray.is_colliding():
+		crosshair.texture = load("res://assets/crosshairs/crosshair-active.png")
+	elif not grab_ray.is_colliding():
+		crosshair.texture = load("res://assets/crosshairs/crosshair.png")
 	
 	if Input.is_action_just_pressed("Input_Left_Click"):
 		if grab_ray.is_colliding() :

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://56oq03k4cnuc"]
 
 [ext_resource type="Script" uid="uid://daktgawpkvjev" path="res://scripts/Player.gd" id="1_3vyb7"]
-[ext_resource type="Texture2D" uid="uid://btf8bo65ba52q" path="res://assets/crosshair.png" id="2_g2els"]
+[ext_resource type="Texture2D" uid="uid://btf8bo65ba52q" path="res://assets/crosshairs/crosshair.png" id="2_g2els"]
 [ext_resource type="PackedScene" uid="uid://bn1iw6c60v4d8" path="res://scenes/pause_menu.tscn" id="3_dqkch"]
 [ext_resource type="PackedScene" uid="uid://brftd8xe0f6dc" path="res://scenes/settings_menu.tscn" id="4_qlg0r"]
 
