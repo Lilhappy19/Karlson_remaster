@@ -128,7 +128,9 @@ func _drag():
 	var collider = grab_ray.get_collider()
 	
 	if grab_ray.is_colliding():
-		crosshair.texture = load("res://assets/crosshairs/crosshair-active.png")
+		for i in grabbable_groups:
+			if collider.is_in_group(i):
+				crosshair.texture = load("res://assets/crosshairs/crosshair-active.png")
 	elif not grab_ray.is_colliding():
 		crosshair.texture = load("res://assets/crosshairs/crosshair.png")
 	
